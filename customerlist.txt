@@ -1,0 +1,88 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Apache Tomcat/8.5.9 - Error report</title>
+	<style type="text/css">
+		h1 {
+			font-family: Tahoma, Arial, sans-serif;
+			color: white;
+			background-color: #525D76;
+			font-size: 22px;
+		}
+
+		h2 {
+			font-family: Tahoma, Arial, sans-serif;
+			color: white;
+			background-color: #525D76;
+			font-size: 16px;
+		}
+
+		h3 {
+			font-family: Tahoma, Arial, sans-serif;
+			color: white;
+			background-color: #525D76;
+			font-size: 14px;
+		}
+
+		body {
+			font-family: Tahoma, Arial, sans-serif;
+			color: black;
+			background-color: white;
+		}
+
+		b {
+			font-family: Tahoma, Arial, sans-serif;
+			color: white;
+			background-color: #525D76;
+		}
+
+		p {
+			font-family: Tahoma, Arial, sans-serif;
+			background: white;
+			color: black;
+			font-size: 12px;
+		}
+
+		a {
+			color: black;
+		}
+
+		a.name {
+			color: black;
+		}
+
+		.line {
+			height: 1px;
+			background-color: #525D76;
+			border: none;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>HTTP Status 404 - /sunbase/portal/api/assignment</h1>
+	<div class="line"></div>
+	<p><b>type</b> Status report</p>
+	<p><b>message</b> <u>/sunbase/portal/api/assignment</u></p>
+	<p><b>description</b> <u>The requested resource is not available.</u></p>
+	<hr class="line">
+	<h3>Apache Tomcat/8.5.9</h3>
+<h1>Customer List</h1>
+    <%-- Retrieve the JSON data from the request attribute --%>
+    <c:set var="jsonData" value="${jsonData}" />
+    
+    <%-- Parse the JSON data into a list of objects (if needed) --%>
+    <%-- Replace YourObjectClass with the actual class representing your objects --%>
+    <c:set var="objectList" value="${jsonData}" />
+    
+    <%-- Display the list of objects --%>
+    <c:forEach items="${objectList}" var="object">
+        <p>${object.property1}</p> <%-- Replace property1 with the actual property name of your object --%>
+        <p>${object.property2}</p> <%-- Replace property2 with another property if needed --%>
+        <%-- Add more properties as needed --%>
+    </c:forEach>
+</body>
+
+</html>
