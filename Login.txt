@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form id="loginForm" action="https://qa2.sunbasedata.com/sunbase/portal/api/assignment_auth">
+        <label for="login_id">Email:</label>
+        <input type="email" id="login_id" name="login_id" required><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        
+        <button type="button" onclick="getToken()">Login</button>
+    </form>
+
+    <div id="tokenDisplay" style="display: none;">
+        <h2>Bearer Token:</h2>
+        <p id="bearerToken"></p>
+    </div>
+
+    <script>
+        function getToken() {
+            const login_id = document.getElementById("login_id").value;
+            const password = document.getElementById("password").value;
+            const body = {
+                login_id: login_id,
+                password: password
+            };
+
+            fetch("https://qa2.sunbasedata.com/sunbase/portal/api/assignment_auth.jsp", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(body)
+            })
+            .then(response => response.text())
+            .then(token => {
+                // Display the bearer token on the page
+                document.getElementById("tokenDisplay").style.display = "block";
+                document.getElementById("bearerToken").textContent = token;
+            })
+            .catch(error => {
+                // Handle error if login fails
+                console.error("Login failed:", error);
+            });
+        }
+    </script>
+</body>
+</html>
